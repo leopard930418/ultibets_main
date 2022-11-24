@@ -5,7 +5,7 @@ import SquidCurosel from '../../components/Container/SquidCurosel'
 import SquidCardList from '../../components/squid/SquidCardList'
 import { GAME } from "../../state/ActionTypes";
 import { AppContext } from "../../state/AppProvider";
-import { SquidData } from '../../constants/SquidData'
+import { SquidData } from '../../Constants/SquidData'
 
 const SbcHome = () => {
   const { state} = useContext(AppContext);
