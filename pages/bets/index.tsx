@@ -4,7 +4,7 @@ import BettingCardList from '../../components/bets/card/BettingCardList'
 import HomeCurosel from '../../components/Container/Curosel'
 import { GAME } from "../../state/ActionTypes";
 import { AppContext } from "../../state/AppProvider";
-import { BettingData } from '../../constants/BettingData'
+import { BettingData } from '../../Constants/BettingData'
 
 const bets = () => {
   const { state} = useContext(AppContext);
