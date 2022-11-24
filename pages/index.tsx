@@ -36,7 +36,7 @@ const Home: NextPage = () => {
   return (
     <Box>
       <Curosel />
-      <Flex justifyContent={'center'} alignItems={'center'}>
+      <Flex justifyContent={'center'}  minHeight={'750px'} >
         <BettingCardList gameType='World Cup' bettingData={BettingData}/>
       </Flex>
     </Box>
