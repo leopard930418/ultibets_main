@@ -66,6 +66,7 @@ const RoundOne = () => {
             currentRound="1"
             chainName="FTM"
             totalPlayers="500"
+            claimNFT="Claim Winner Round I NFT"
           />
         </Flex>
       </Box>
