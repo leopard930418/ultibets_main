@@ -13,6 +13,7 @@ import React, { useEffect, useRef, useState } from 'react'
 const Timeline = () => {
   const router = useRouter()
   const currentRoute = router.pathname
+  const currentStep = 1;
   // create object of active  states for each timeline item
   const [active, setActive] = React.useState({
     one: true,
@@ -103,7 +104,7 @@ const Timeline = () => {
     {
       id: '1',
       title: 'squid bet registration',
-      href: '/squid-competition',
+      href: '/squid-competition/one/register',
     },
     {
       id: '2',
@@ -231,6 +232,7 @@ const Timeline = () => {
           <Flex
             width={['1200px', '1200px', '1200px', '84vw']}
             overflowX={'hidden'}
+            overflowY={'hidden'}
             justifyContent={'space-between'}
 
             //   gap={'20px'}
@@ -281,29 +283,30 @@ const Timeline = () => {
           <Flex
             height={'0px'}
             width={
-              currentRoute === '/squid-competition'
-                ? '150px'
+              currentRoute === '/squid-competition/one/register'
+                ? 'calc(100%/8 * 1)'
                 : currentRoute === '/squid-competition/one/round-one'
-                ? '300px'
+                ? 'calc(100%/8 * 2)'
                 : currentRoute === '/squid-competition/one/round-two'
-                ? '450px'
+                ? 'calc(100%/8 * 3)'
                 : currentRoute === '/squid-competition/one/round-three'
-                ? '600px'
+                ? 'calc(100%/8 * 4)'
                 : currentRoute === '/squid-competition/one/round-four'
-                ? '750px'
+                ? 'calc(100%/8 * 5)'
                 : currentRoute === '/squid-competition/one/round-five'
-                ? '900px'
+                ? 'calc(100%/8 * 6)'
                 : currentRoute === '/squid-competition/one/final-vote'
-                ? '1050px'
+                ? 'calc(100%/8 * 7)'
                 : currentRoute === '/squid-competition/one/winner-page'
-                ? '1200px'
+                ? 'calc(100%/8 * 8)'
                 : '0px'
             }
             border={'1px solid #E18933'}
             mt={'-2px'}
-          ></Flex>
+          >
+          </Flex>
 
-          <Flex gap={'140px'} width={['1200px', '1200px', '100%', '100%']}>
+          <Flex justifyContent={'space-between'} width={['1200px', '1200px', '100%', '100%']}>
             {[...Array(9)].map((dot, index) => (
               <Flex
                 key={index}

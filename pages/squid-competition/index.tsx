@@ -9,8 +9,7 @@ import { SquidData } from '../../Constants/SquidData'
 
 const SbcHome = () => {
   const { state} = useContext(AppContext);
-  const initHeight = (window.innerHeight+70).toString()+"px";
-  const [wHeight, setWHeight] = useState(initHeight);
+  const [wHeight, setWHeight] = useState('500px');
   const getWHeight:any = ()=> {
     setWHeight((window.innerHeight-70).toString()+"px");
   }

@@ -27,6 +27,7 @@ const SideLink = ({ name, href, icon }: SideLinkProps) => {
           type: GAME,
           payload: { game: name },
         });
+        currentRoute.includes('squid-competition') && router.push('/squid-competition')
       }}
     >
       <Tooltip
