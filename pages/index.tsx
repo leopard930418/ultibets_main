@@ -32,7 +32,7 @@ const Home: NextPage = () => {
     <Box>
       <Curosel />
       <Flex justifyContent={'center'} alignItems={'center'}  minHeight={['750px', '750px', '750px','900px', '800px','1500px']} >
-        <BettingCardList gameType='World Cup'/>
+        {/* <BettingCardList gameType='World Cup'/> */}
       </Flex>
     </Box>
   )
