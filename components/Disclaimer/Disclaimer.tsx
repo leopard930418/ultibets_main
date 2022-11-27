@@ -7,7 +7,7 @@ import {
   Link,
   Text,
 } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '@fontsource/nunito'
 import { useRouter } from 'next/router'
 
@@ -20,9 +20,24 @@ const Disclaimer = () => {
   const router = useRouter()
   //Checkbox State
   const [isChecked, setIsChecked] = React.useState(false)
-
+  const [wHeight, setWHeight] = useState('500px');
+  const getWHeight:any = ()=> {
+    setWHeight((window.innerHeight+70).toString()+"px");
+  }
+  useEffect(()=>{
+    window.addEventListener('resize', getWHeight);
+    return(()=>{
+      window.removeEventListener('resize', getWHeight);
+    })
+  }, [wHeight]);
+  useEffect(()=>{
+    setWHeight((window.innerHeight+70).toString()+"px");
+  }, []);
   return (
-    <Flex direction={'column'}>
+    <Flex
+      direction={'column'}
+      minHeight={wHeight} 
+    >
       <Flex justifyContent={'start'} alignItems={'center'} direction={'column'}>
         <Flex m={'30px'}>
           <Heading>Disclaimer</Heading>

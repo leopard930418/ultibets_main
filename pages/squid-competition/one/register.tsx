@@ -41,7 +41,7 @@ const SquidCompatition = () => {
   return (
     <>
       {/* <SquidCurosel /> */}
-      <Box ml={['20px', '20px', '120px', '120px']} mt={'30px'}>
+      <Box ml={['20px', '20px', '120px', '120px']} mt={'30px'} minHeight={['750px', '750px', '750px','900px', '800px','1500px']} >
         <Flex direction={'column'}>
           <Box>
             <MyBetsComponent />

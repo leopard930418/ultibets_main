@@ -12,7 +12,7 @@ const Header = () => {
       href: 'https://ultibets.vercel.app/',
     },
     {
-      name: 'Bets',
+      name: 'Prediction Markets',
       href: '/bets',
     },
 
@@ -76,20 +76,20 @@ const Header = () => {
                     <Image
                       src="/images/svgs/with-color-logo.svg"
                       alt="logo"
-                      width={['200px', 'unset', '200px', '100%']}
+                      width={['200px', 'unset', '200px', '250px']}
                     />
                   </Link>
                 </NextLink>
               </Flex>
               <Flex
-                width={['100vw', '100vw', 'unset', '100%']}
+                width={['100vw', '100vw', 'auto', '100%']}
                 justifyContent={'space-between'}
                 display={['flex', 'flex', 'flex', 'none']}
               >
                 <Image
-                  src="/images/svgs/logo-mobile-three.png"
+                  src="/images/svgs/logo-vector.svg"
                   alt="logo"
-                  width={['80px', '80px', '120px', '100%']}
+                  width={['160px', '80px', '150px', '100%']}
                 />
 
                 <Flex
@@ -112,19 +112,20 @@ const Header = () => {
                   )}
                 </Flex>
               </Flex>
-
-              <Flex
-                display={['none', 'none', 'flex', 'flex']}
-                width={['unset', 'unset', '100%', '100%']}
-                mt={['unset', 'unset', 7, 7]}
-                height={['unset', 'unset', 15, 15]}
-                gap={['unset', 'unset', '15px', 10]}
-                ml={['unset', 'unset', '0px', '90px']}
-                alignItems={['unset', 'unset', 'center', 'center']}
-              >
-                {LinkArray.map((item, index) => (
-                  <NavLink key={index} name={item.name} href={item.href} />
-                ))}
+              <Flex>
+                <Flex
+                  display={['none', 'none', 'flex', 'flex']}
+                  width={['unset', 'unset', '100%', '100%']}
+                  mt={['unset', 'unset', 7, 7]}
+                  height={['unset', 'unset', 15, 15]}
+                  gap={['unset', 'unset', '10px', 4, 8]}
+                  ml={['unset', 'unset', '10px']}
+                  alignItems={['unset', 'unset', 'center', 'center']}
+                >
+                  {LinkArray.map((item, index) => (
+                    <NavLink key={index} name={item.name} href={item.href} />
+                  ))}
+                </Flex>
               </Flex>
               <Flex>
                 <Flex

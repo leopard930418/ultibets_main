@@ -57,7 +57,7 @@ const WinnerPage = () => {
 
   return (
     <>
-      <Box ml={['20px', '0px', '0px', '120px']} mt={'40px'}>
+      <Box ml={['20px', '0px', '0px', '120px']} mt={'40px'} >
         <Flex direction={'column'}>
           <Box>
             <Flex gap={'18px'}>

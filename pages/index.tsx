@@ -16,14 +16,9 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import BettingCardList from '../components/bets/card/BettingCardList'
 import Curosel from '../components/Container/Curosel'
-import { useContext } from 'react'
 
-import { GAME } from '../state/ActionTypes'
-import { AppContext } from '../state/AppProvider'
-import { BettingData } from '../Constants/BettingData'
 const Home: NextPage = () => {
   const router = useRouter()
-  const { state } = useContext(AppContext)
 
   // route to the disclaimer page when user arrives to the site for the first time and only once
   useEffect(() => {
@@ -36,10 +31,8 @@ const Home: NextPage = () => {
   return (
     <Box>
       <Curosel />
-      <Flex justifyContent={'center'} minHeight={'750px'}>
-        <Box height={'auto'}>
-          <BettingCardList gameType="World Cup" bettingData={BettingData} />
-        </Box>
+      <Flex justifyContent={'center'} alignItems={'center'}  minHeight={['750px', '750px', '750px','900px', '800px','1500px']} >
+        <BettingCardList gameType='World Cup'/>
       </Flex>
     </Box>
   )

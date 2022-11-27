@@ -17,12 +17,12 @@ const Footer = () => {
       href: '/',
     },
     {
-      name: 'Bets',
+      name: 'Prediction Markets',
       href: '/bets',
     },
 
     {
-      name: 'Squid Competition',
+      name: 'Squid Bet Competitions',
       href: '/squid-competition',
     },
     {
@@ -99,15 +99,17 @@ const Footer = () => {
         </Container>
       </Box> */}
 
-      <Box>
+      <Box >
         <Box
-          mt={['0px', '0px', '0px', '10px']}
+          // mt={['0px', '0px', '0px', '10px']}
           display={['block', 'block', 'block', 'block']}
           bgGradient={'linear(to-r, #353535 29.48%, #5A3B2E 75.94%)'}
           borderStyle={'solid'}
           width={'100%'}
           bottom={'0'}
           px={'80px'}
+          
+          
         >
           <Flex
             height={['unset', 'unset', 'unset', '70px']}

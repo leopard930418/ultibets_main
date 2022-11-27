@@ -5,7 +5,7 @@ import { BettingcardProps } from '../../../components/bets/card/Bettingcard'
 
 type BettingCardListProps = {
   gameType: string;
-  bettingData?: Array<BettingcardProps>;
+  bettingData: Array<BettingcardProps>;
 };
 const BettingCardList = ({
   gameType,
