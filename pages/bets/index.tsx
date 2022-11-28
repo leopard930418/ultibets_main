@@ -50,7 +50,7 @@ const bets = () => {
               ? '790px'
               : '700px'
           }
-          // height={'100vh'}
+          // height={'93vh'} minHeight={'1000px'}
         >
           <div>
             <BettingCardList

@@ -707,6 +707,7 @@ const FinalVote = () => {
         ml={['20px', '0px', '20px', '120px']}
         mt={['30px', '30px', '40px', '40px']}
         mr={['0px', '0px', '20px', '0px']}
+        height={'93vh'} minHeight={'1000px'}
       >
         <Flex direction={'column'}>
           <Box>

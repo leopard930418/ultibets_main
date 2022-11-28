@@ -13,7 +13,7 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '@fontsource/inter'
 import '@fontsource/nunito'
 import { useRouter } from 'next/router'
@@ -33,7 +33,20 @@ const SquidCompatition = () => {
     // only 5 players are active
     active: i < 5,
   }))
-
+  const [wWidth, setWHeight] = useState(500)
+  const getWWidth: any = () => {
+    setWHeight(window.innerWidth + 70)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    console.log(wWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWHeight(window.innerWidth)
+  }, [])
   useEffect(() => {
     document.title = 'Squid Competitions | UltiBets'
   }, [])
@@ -41,7 +54,7 @@ const SquidCompatition = () => {
   return (
     <>
       {/* <SquidCurosel /> */}
-      <Box ml={['20px', '20px', '120px', '120px']} mt={'30px'} minHeight={['750px', '750px', '750px','900px', '800px','1500px']} >
+      <Box ml={['20px', '20px', '120px', '120px']} mt={'30px'} height={'93vh'} minHeight={'1000px'}>
         <Flex direction={'column'}>
           <Box>
             <MyBetsComponent />
