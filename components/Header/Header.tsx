@@ -4,6 +4,9 @@ import NextLink from 'next/link'
 import '@fontsource/nunito'
 import NavLink from './Navlink'
 import Account from '../Account'
+import React, { useContext, useState, useEffect } from 'react'
+import {AppContext} from '../../state/AppProvider'
+import { W_WIDTH } from '../../state/ActionTypes'
 
 const Header = () => {
   const LinkArray = [
@@ -40,8 +43,31 @@ const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const handleToggle = () => (isOpen ? onClose() : onOpen())
 
+  const { dispatch } = useContext(AppContext)
+  // const initHeight = (window.innerHeight-70).toString()+"px";
+  const [wWidth, setWHeight] = useState(500)
+  const getWWidth: any = () => {
+    setWHeight(wWidth)
+    
+    dispatch({
+      type: W_WIDTH,
+      payload: { w_width: window.innerWidth },
+    });
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWHeight(window.innerWidth)
+    
+  }, [])
+
   return (
     <>
+    
       <Box
         // position="fixed"
         zIndex={10}
