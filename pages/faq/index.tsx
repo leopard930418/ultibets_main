@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Icon, Text } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '@fontsource/nunito'
 import { AddIcon, CloseIcon, PlusSquareIcon } from '@chakra-ui/icons'
 
@@ -25,14 +25,39 @@ const FAQS = () => {
   const toggleAccordionFive = () => {
     setActiveFive(!activeFive)
   }
+  const [wWidth, setWHeight] = useState(500)
+  const getWWidth: any = () => {
+    setWHeight(window.innerWidth + 70)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    console.log(wWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWHeight(window.innerWidth)
+  }, [])
   return (
     <Flex
-      height={['auto', 'auto', 'auto', '100vh']}
+      // height={['auto', 'auto', 'auto', '100vh']}
       direction={'column'}
       justifyContent={'start'}
       alignItems={'center'}
       gap={'20px'}
       mb={'30px'}
+      minHeight={
+        wWidth > 5100
+          ? '2360px'
+          : wWidth > 4000
+          ? '1725px'
+          : wWidth > 2700
+          ? '1090px'
+          : wWidth > 1800
+          ? '775px'
+          : '700px'
+      }
     >
       <Flex justifyContent={'center'} alignItems={'center'}>
         <Heading fontSize={'30px'} mt={'20px'}>

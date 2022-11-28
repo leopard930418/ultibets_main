@@ -20,23 +20,34 @@ const Disclaimer = () => {
   const router = useRouter()
   //Checkbox State
   const [isChecked, setIsChecked] = React.useState(false)
-  const [wHeight, setWHeight] = useState('500px');
-  const getWHeight:any = ()=> {
-    setWHeight((window.innerHeight+70).toString()+"px");
+  const [wWidth, setWHeight] = useState(500)
+  const getWWidth: any = () => {
+    setWHeight(window.innerWidth + 70)
   }
-  useEffect(()=>{
-    window.addEventListener('resize', getWHeight);
-    return(()=>{
-      window.removeEventListener('resize', getWHeight);
-    })
-  }, [wHeight]);
-  useEffect(()=>{
-    setWHeight((window.innerHeight+70).toString()+"px");
-  }, []);
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    console.log(wWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWHeight(window.innerWidth)
+  }, [])
   return (
     <Flex
       direction={'column'}
-      minHeight={wHeight} 
+      minHeight={
+        wWidth > 5100
+          ? '2390px'
+          : wWidth > 4000
+          ? '1755px'
+          : wWidth > 2700
+          ? '1120px'
+          : wWidth > 1800
+          ? '730px'
+          : '700px'
+      }
     >
       <Flex justifyContent={'start'} alignItems={'center'} direction={'column'}>
         <Flex m={'30px'}>

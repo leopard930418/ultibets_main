@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import dynamic from 'next/dynamic'
 import Pie from './Pie'
 import '@fontsource/inter'
@@ -55,12 +55,39 @@ const chartData = [
     litres: 300000000,
   },
 ]
+
 const UtBetsToken = () => {
   const router = useRouter()
   const currentRoute = router.pathname
+  const [wWidth, setWHeight] = useState(500)
+  const getWWidth = () => {
+    setWHeight(window.innerWidth + 70)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    console.log(wWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWHeight(window.innerWidth)
+  }, [])
   return (
     <>
-      <Flex justifyContent={'center'} direction={'column'} gap={'15px'}>
+      <Flex justifyContent={'center'} direction={'column'} gap={'15px'}   minHeight={
+            wWidth > 5100
+              ? '2190px'
+              : wWidth > 4000
+              ? '1558px'
+              : wWidth > 2700
+              ? '925px'
+              : wWidth > 1800
+              ? '730px'
+              : wWidth > 1700
+              ? '790px'
+              : '700px'
+          }>
         <Flex justifyContent={'center'} alignItems={'center'}>
           <Flex gap={'18px'}>
             <Text
