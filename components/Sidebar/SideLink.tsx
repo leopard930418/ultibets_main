@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Tooltip } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import React, {useContext} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { GAME } from "../../state/ActionTypes";
 import { AppContext } from "../../state/AppProvider";
 type SideLinkProps = {
@@ -12,7 +12,19 @@ const SideLink = ({ name, href, icon }: SideLinkProps) => {
   const router = useRouter()
   const currentRoute = router.pathname
   const { state, dispatch } = useContext(AppContext);
-  
+  const [wWidth, setWWidth] = useState(500)
+  const getWWidth: any = () => {
+    setWWidth(window.innerWidth)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWWidth(window.innerWidth)
+  }, [])
   return (
     <Flex
       ml={'7px'}
@@ -42,8 +54,8 @@ const SideLink = ({ name, href, icon }: SideLinkProps) => {
           py={'1px'}
           src={icon}
           alt={name}
-          width={['30px', '30px', '42px', '42px']}
-          height={['30px', '30px', '42px', '42px']}
+          width={['30px', '30px', '42px', wWidth<3000?'42px':'84px']}
+          height={['30px', '30px', '42px', wWidth<3000?'42px':'84px']}
         />
       </Tooltip>
     </Flex>

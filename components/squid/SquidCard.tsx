@@ -1,5 +1,5 @@
 import { Button, Flex, Image, Text } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '@fontsource/nunito'
 import { useRouter } from 'next/router'
 
@@ -39,15 +39,27 @@ const SquidCard = ({
   useEffect(() => {
     console.log('id', id)
   }, [id])
-
+  const [wWidth, setWWidth] = useState(500)
+  const getWWidth: any = () => {
+    setWWidth(window.innerWidth)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWWidth(window.innerWidth)
+  }, [])
   return (
     <Flex
       position={'relative'}
       data-sal-delay="500"
       data-sal={'slide-up'}
       data-sal-duration="800"
-      width={'250px'}
-      height={'185px'}
+      width={wWidth<3000?'250px':'500px'}
+      height={wWidth<3000?'185px':'270px'}
       background={'url("images/svgs/card/svgviewer-output.svg")'}
       borderRadius={'5px'}
       boxShadow={'0px 0px 10px rgba(0, 0, 0, 0.25)'}
@@ -56,6 +68,8 @@ const SquidCard = ({
       _hover={{
         boxShadow: '0px 0px 10px rgba(255, 145, 0, 0.25)',
       }}
+      backgroundRepeat={'no-repeat'}
+      backgroundSize={'cover'}
       cursor={'pointer'}
       onClick={() =>
         router.push(`
@@ -63,7 +77,7 @@ const SquidCard = ({
       `)
       }
       p={'10px'}
-      className = 'sal-animate'
+      className="sal-animate"
       // margin={'10px'}
     >
       {/* <Box

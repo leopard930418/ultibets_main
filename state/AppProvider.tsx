@@ -3,10 +3,11 @@
  */
 
 import React, { createContext, Dispatch, useEffect, useReducer } from "react";
-import { IGameAction, IState, IThemeAction, StateActions, UserActions } from "./interfaces";
+import { IGameAction, IState, IThemeAction, IWidthAction, StateActions, UserActions } from "./interfaces";
 import themeReducer from "./reducers/themeReducer";
 import userReducer from "./reducers/userReducer";
 import gameReducer from "./reducers/gamereducer";
+import widthReducer from "./reducers/widthreducer";
 
 const APP_STATE_NAME = "testing";
 
@@ -22,6 +23,9 @@ const initialState: IState = {
       },
       game: {
         game: "World Cup",
+      },
+      w_width: {
+        w_width: 500,
       }
     };
 
@@ -31,12 +35,13 @@ const AppContext = createContext<{
 }>({ state: initialState, dispatch: () => null });
 
 const combinedReducers = (
-  { user, theme, game, }: IState,
-  action: UserActions | IThemeAction | IGameAction
+  { user, theme, game, w_width, }: IState,
+  action: UserActions | IThemeAction | IGameAction | IWidthAction
 ) => ({
   user: userReducer(user, action),
   theme: themeReducer(theme, action),
   game: gameReducer(game, action),
+  w_width: widthReducer(w_width, action),
 });
 
 const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {

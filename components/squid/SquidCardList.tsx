@@ -1,5 +1,5 @@
 import { Grid } from '@chakra-ui/react'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import { SquidCardProps } from '../../components/squid/SquidCard'
 import SquidCard from './SquidCard'
@@ -12,6 +12,19 @@ const SquidCardList = ({
   gameType,
   squidData,
 }: SquidCardListProps) => {
+  const [wWidth, setWWidth] = useState(500)
+  const getWWidth: any = () => {
+    setWWidth(window.innerWidth)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWWidth(window.innerWidth)
+  }, [])
   return (
     <Grid
       gridTemplateColumns={[
@@ -21,7 +34,7 @@ const SquidCardList = ({
         'repeat(4, 1fr)',
       ]}
       mt="20px"
-      gap={'50px'}
+      gap={wWidth<3000?'50px':'200px'}
       ml={['40px', '30px', '20px', '5px']}
       p={'10px'}
     >

@@ -33,9 +33,9 @@ const SquidCompatition = () => {
     // only 5 players are active
     active: i < 5,
   }))
-  const [wWidth, setWHeight] = useState(500)
+  const [wWidth, setWWidth] = useState(500)
   const getWWidth: any = () => {
-    setWHeight(window.innerWidth + 70)
+    setWWidth(window.innerWidth + 70)
   }
   useEffect(() => {
     window.addEventListener('resize', getWWidth)
@@ -45,7 +45,7 @@ const SquidCompatition = () => {
     }
   }, [wWidth])
   useEffect(() => {
-    setWHeight(window.innerWidth)
+    setWWidth(window.innerWidth)
   }, [])
   useEffect(() => {
     document.title = 'Squid Competitions | UltiBets'

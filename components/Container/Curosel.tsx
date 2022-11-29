@@ -11,7 +11,7 @@ import {
 import { Carousel } from 'react-responsive-carousel'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import '@fontsource/inter'
-import { CSSProperties } from 'react'
+import { CSSProperties, useState, useEffect } from 'react'
 import CuroselLink from './CuroselLink'
 
 const HomeCurosel = () => {
@@ -33,7 +33,19 @@ const HomeCurosel = () => {
     width: '13px',
     height: '13px',
   }
-
+  const [wWidth, setWWidth] = useState(500)
+  const getWWidth: any = () => {
+    setWWidth(window.innerWidth)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWWidth(window.innerWidth)
+  }, [])
   return (
     <div data-sal-delay="500" data-sal={'slide-up'} data-sal-duration="800">
       <Carousel

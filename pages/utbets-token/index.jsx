@@ -59,9 +59,9 @@ const chartData = [
 const UtBetsToken = () => {
   const router = useRouter()
   const currentRoute = router.pathname
-  const [wWidth, setWHeight] = useState(500)
+  const [wWidth, setWWidth] = useState(500)
   const getWWidth = () => {
-    setWHeight(window.innerWidth + 70)
+    setWWidth(window.innerWidth )
   }
   useEffect(() => {
     window.addEventListener('resize', getWWidth)
@@ -71,7 +71,7 @@ const UtBetsToken = () => {
     }
   }, [wWidth])
   useEffect(() => {
-    setWHeight(window.innerWidth)
+    setWWidth(window.innerWidth)
   }, [])
   return (
     <>

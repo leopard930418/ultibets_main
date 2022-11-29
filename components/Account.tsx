@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useRef } from 'react'
 import { getEllipsisTxt } from '../utils/formatters'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, } from 'react'
 import { getExplorer } from '../utils/networks'
 import {
   connectors,
@@ -33,6 +33,8 @@ import Image from 'next/image'
 import 'react-toastify/dist/ReactToastify.css'
 import '@fontsource/nunito'
 import { AbstractConnector } from '@web3-react/abstract-connector'
+import { AppContext } from '../state/AppProvider'
+
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare let window: any
@@ -73,7 +75,19 @@ function Account() {
 
   const ACCOUNT_KEY = 'LAST_ACTIVE_ACCOUNT'
   const CONNECTOR_KEY = 'LAST_WALLET_CONNECTOR'
-
+  const [wWidth, setWWidth] = useState(500)
+  const getWWidth: any = () => {
+    setWWidth(window.innerWidth)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWWidth(window.innerWidth)
+  }, [])
   const connetHandler = async (provider: AbstractConnector) => {
     try {
       if (provider === walletconnect) {
@@ -127,6 +141,7 @@ function Account() {
     return localStorage?.getItem(CONNECTOR_KEY)
   }
 
+  
   useEffect(() => {
     const lastConnector = getLastConnector()
     const lastActiveAccount = getLastActiveAccount()
@@ -143,9 +158,9 @@ function Account() {
         <Button
           onClick={onOpen}
           variant={'solid'}
-          width={['150px', '150px', '150x', '240px']}
-          height={['35px', '35px', '35px', '41px']}
-          borderRadius={['35px', '35px', '35px', '35px']}
+          width={['150px', '150px', '150x', wWidth<3000?'240px':'480px']}
+          height={['35px', '35px', '35px', wWidth<3000?'41px':'82px']}
+          borderRadius={['35px', '35px', '35px', wWidth<3000?'35px':'70px']}
           border="1px solid #FC541C"
           backgroundColor={'#1F1F1F'}
           color={'white'}
@@ -157,10 +172,10 @@ function Account() {
           }}
         >
           <Text
-            fontSize={['14px', '14px', '16px', '18px']}
+            fontSize={['14px', '14px', '16px', wWidth<3000?'18px':'36px']}
             fontFamily={'Nunito'}
-            fontWeight="700px"
-            lineHeight={'25px'}
+            fontWeight={wWidth<3000?"700px":"1400px"}
+            lineHeight={wWidth<3000?'25px':'50px'}
           >
             Connect Wallet
           </Text>

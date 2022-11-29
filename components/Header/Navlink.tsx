@@ -9,9 +9,9 @@ import Head from 'next/head'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../state/AppProvider'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { GAME } from '../../state/ActionTypes'
-
+import {useState} from 'react'
 type NavlinkProps = {
   href: string
   name: string
@@ -27,7 +27,28 @@ export default function NavLink({ name, href, onClose, footer }: NavlinkProps) {
   }
   const prefersReducedMotion = usePrefersReducedMotion()
   const { dispatch } = useContext(AppContext)
+  
+  const [wWidth, setWWidth] = useState(500)
+  // if (typeof window !== "undefined") {
+  //   setWWidth(window.innerWidth)
+  //   // console.log('wWidth', wWidth)
+  // }
+  const getWWidth: any = () => {
+    setWWidth(window.innerWidth)
+    console.log("navlink", wWidth);
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
 
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWWidth(window.innerWidth)
+    
+  }, [])
+  
   // left to right animation
   const spin = keyframes`
    0%   { transform: translateX(-100px); }
@@ -145,7 +166,7 @@ export default function NavLink({ name, href, onClose, footer }: NavlinkProps) {
                   payload: { game: 'World Cup' },
                 })
               }}
-              fontSize={['14px', '14px', '13px', footer ? '14px' : '18px']}
+              fontSize={['14px', '14px', '13px', wWidth>3000? (footer ? '28px' : '36px'):(footer ? '14px' : '18px')]}
               fontFamily={'Nunito'}
               fontWeight={'bold'}
             >

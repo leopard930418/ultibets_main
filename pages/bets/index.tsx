@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react'
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import BettingCardList from '../../components/bets/card/BettingCardList'
 import HomeCurosel from '../../components/Container/Curosel'
 import { AppContext } from '../../state/AppProvider'
@@ -7,22 +7,20 @@ import { BettingData } from '../../Constants/BettingData'
 
 const bets = () => {
   const { state } = useContext(AppContext)
-  const wWidth = state.w_width.w_width;
   // const initHeight = (window.innerHeight-70).toString()+"px";
-  // const [wWidth, setWHeight] = useState(500)
-  // const getWWidth: any = () => {
-  //   setWHeight(window.innerWidth)
-  // }
-  // useEffect(() => {
-  //   window.addEventListener('resize', getWWidth)
-  //   console.log(wWidth)
-  //   return () => {
-  //     window.removeEventListener('resize', getWWidth)
-  //   }
-  // }, [wWidth])
-  // useEffect(() => {
-  //   setWHeight(window.innerWidth)
-  // }, [])
+  const [wWidth, setWWidth] = useState(500)
+  const getWWidth: any = () => {
+    setWWidth(window.innerWidth)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWWidth(window.innerWidth)
+  }, [])
   return (
     <>
       <Box
@@ -41,7 +39,7 @@ const bets = () => {
             wWidth > 5100
               ? '2090px'
               : wWidth > 4000
-              ? '1455px'
+              ? '1400px'
               : wWidth > 2700
               ? '820px'
               : wWidth > 1800

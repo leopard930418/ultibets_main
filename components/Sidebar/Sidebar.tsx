@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import SideLink from './SideLink'
 
 type SidebarItemProps = {
@@ -93,6 +93,19 @@ const Sidebar = () => {
       icon: '/images/svgs/sidebar/squid.svg',
     },
   ]
+  const [wWidth, setWWidth] = useState(500)
+  const getWWidth: any = () => {
+    setWWidth(window.innerWidth)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', getWWidth)
+    return () => {
+      window.removeEventListener('resize', getWWidth)
+    }
+  }, [wWidth])
+  useEffect(() => {
+    setWWidth(window.innerWidth)
+  }, [])
   return (
     <>
       {currentRoute !== '/disclaimer' ? (
@@ -106,7 +119,7 @@ const Sidebar = () => {
               ? '330px'
               : '30px'
           }
-          gap={'10px'}
+          gap={wWidth<3000?'10px':'20px'}
           display={['none', 'none', 'none', 'flex']}
           position="absolute"
           flexDirection={'column'}

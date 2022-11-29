@@ -10,9 +10,9 @@ import { SquidData } from '../../Constants/SquidData'
 const SbcHome = () => {
   const { state } = useContext(AppContext)
   // const initHeight = (window.innerHeight-70).toString()+"px";
-  const [wWidth, setWHeight] = useState(500)
+  const [wWidth, setWWidth] = useState(500)
   const getWWidth: any = () => {
-    setWHeight(window.innerWidth + 70)
+    setWWidth(window.innerWidth + 70)
   }
   useEffect(() => {
     window.addEventListener('resize', getWWidth)
@@ -21,7 +21,7 @@ const SbcHome = () => {
     }
   }, [wWidth])
   useEffect(() => {
-    setWHeight(window.innerWidth)
+    setWWidth(window.innerWidth)
   }, [])
   return (
     <Box

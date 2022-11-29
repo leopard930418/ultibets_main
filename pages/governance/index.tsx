@@ -6,9 +6,9 @@ import '@fontsource/inter'
 import '@fontsource/nunito'
 
 const Governance = () => {
-  const [wWidth, setWHeight] = useState(500)
+  const [wWidth, setWWidth] = useState(500)
   const getWWidth: any = () => {
-    setWHeight(window.innerWidth + 70)
+    setWWidth(window.innerWidth + 70)
   }
   useEffect(() => {
     window.addEventListener('resize', getWWidth)
@@ -18,7 +18,7 @@ const Governance = () => {
     }
   }, [wWidth])
   useEffect(() => {
-    setWHeight(window.innerWidth)
+    setWWidth(window.innerWidth)
   }, [])
   return (
     <Flex

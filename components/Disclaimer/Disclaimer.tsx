@@ -20,9 +20,9 @@ const Disclaimer = () => {
   const router = useRouter()
   //Checkbox State
   const [isChecked, setIsChecked] = React.useState(false)
-  const [wWidth, setWHeight] = useState(500)
+  const [wWidth, setWWidth] = useState(500)
   const getWWidth: any = () => {
-    setWHeight(window.innerWidth + 70)
+    setWWidth(window.innerWidth + 70)
   }
   useEffect(() => {
     window.addEventListener('resize', getWWidth)
@@ -32,7 +32,7 @@ const Disclaimer = () => {
     }
   }, [wWidth])
   useEffect(() => {
-    setWHeight(window.innerWidth)
+    setWWidth(window.innerWidth)
   }, [])
   return (
     <Flex
