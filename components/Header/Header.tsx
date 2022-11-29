@@ -93,9 +93,9 @@ const Header = () => {
                       <Image
                         src="/images/svgs/with-color-logo.svg"
                         alt="logo"
-                        width={["130px", "unset", "130px", "170px"]}
-                        marginLeft={"28px"}
-                        marginTop={"15px"}
+                        width={['130px', 'unset', '130px', '170px']}
+                        marginLeft={'28px'}
+                        marginTop={'15px'}
                         marginRight={'20px'}
                       />
                       <Box
@@ -113,17 +113,7 @@ const Header = () => {
                     </Link>
                   </NextLink>
                 </Flex>
-                <Flex
-                  width={['100vw', '100vw', 'auto', '100%']}
-                  justifyContent={'space-between'}
-                  display={['flex', 'flex', 'flex', 'none']}
-                >
-                  <Image
-                    src="/images/svgs/logo-vector.svg"
-                    alt="logo"
-                    width={['160px', '80px', '150px', '100%']}
-                  />
-                </Flex>
+
                 <Flex>
                   <Flex
                     display={['none', 'none', 'flex', 'flex']}
@@ -205,10 +195,9 @@ const Header = () => {
                       <Image
                         src="/images/svgs/with-color-logo.svg"
                         alt="logo"
-                        width={["130px", "unset", "130px", "170px"]}
-                        marginLeft={"28px"}
-                        marginTop={"15px"}
-                        marginRight={'20px'}
+                        width={['80%']}
+                        mt={'10px'}
+                        ml={'40px'}
                       />
                       <Box
                         opacity={0.8}
@@ -216,7 +205,7 @@ const Header = () => {
                         position={'absolute'}
                         width={'289px'}
                         height={'289px'}
-                        marginLeft={['-70px']}
+                        marginLeft={['-100px']}
                         marginTop={['-160px']}
                         background={
                           'radial-gradient(50% 50% at 50% 50%, rgba(225, 137, 51, 0.5) 0%, rgba(225, 136, 51, 0.5) 0.01%, rgba(190, 59, 49, 0) 100%)'
@@ -231,9 +220,11 @@ const Header = () => {
                   display={['flex', 'flex', 'flex', 'none']}
                 >
                   <Image
-                    src="/images/svgs/logo-vector.svg"
+                    src="/images/svgs/bg/logo-vector.svg"
                     alt="logo"
-                    width={['160px', '80px', '150px', '100%']}
+                    ml={'4'}
+                    mt={'4'}
+                    width={['80%']}
                   />
 
                   <Flex
